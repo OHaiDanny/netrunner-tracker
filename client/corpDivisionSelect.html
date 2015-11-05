@@ -1,0 +1,13 @@
+<template name="corpDivisionSelect">
+<h1>You have selected {{corp.label}}</h1>
+<p>Choose your division</p>
+<ul>
+    {{> divisionSelect}}
+</ul>
+</template>
+
+<template name="divisionSelect">
+    {{#each division}} 
+        <li><a href="/tracker/"><button>{{label}}</button></a></li>
+    {{/each}}
+</template>

@@ -1,0 +1,8 @@
+<template name='corpSelect'>
+    <h1>Select Your Corporation</h1>
+    <ul>
+        {{#each names}}
+            <li><a href="/corp/{{_id}}"><button>{{label}}</button></a></li>
+        {{/each}}
+    </ul>
+</template>
