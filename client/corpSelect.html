@@ -1,8 +1,13 @@
 <template name='corpSelect'>
+    <figure id="small_logo">
+        <img id="logo" src="/img/an_logo.png"/>
+        <figcaption>Tracker App</figcaption>
+    </figure>
+    
     <h1>Select Your Corporation</h1>
-    <ul>
+    <ul class="selectList" id="corpSelect">
         {{#each names}}
-            <li><a href="/corp/{{_id}}"><button>{{label}}</button></a></li>
+            <li><a href="/corp/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{name}}">{{label}}</button></a></li>
         {{/each}}
     </ul>
 </template>

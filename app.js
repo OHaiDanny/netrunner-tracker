@@ -1,17 +1,22 @@
 CorpList = new Meteor.Collection("Corp");
 DivisionList = new Meteor.Collection("Division");
 
+FactionList = new Meteor.Collection("Faction");
 RunnerList = new Meteor.Collection("Runner");
+
 
 
 if (Meteor.isServer) {
     Meteor.publish("Division", function() {
-        return CorpList.find({});
+        return DivisionList.find({});
     });
     Meteor.publish("Corp", function() {
         return CorpList.find({});
     });
     
+    Meteor.publish("Faction", function() {
+        return FactionList.find({});
+    });
     Meteor.publish("Runner", function() {
         return RunnerList.find({});
     });
@@ -22,6 +27,7 @@ if (Meteor.isClient) {
     Meteor.subscribe("Corp");
     
     Meteor.subscribe("Runner");
+    Meteor.subscribe("Faction");
 }
 
 Meteor.methods({
@@ -57,22 +63,29 @@ Meteor.methods({
         
     },
     createRunner: function() {
-        var clearList = RunnerList;
+        var clearList = [FactionList, RunnerList];
         clearDb(clearList);
         
-        var runnerFaction = RunnerFactory.create();
-        _.each(runnerFaction, function(division, i) {
-            RunnerList.insert(division);
+        var allRunners = RunnerFactory.create();
+        _.each(allRunners, function(runner){
+            RunnerList.insert(runner);
+        });
+        console.log("Runner ", RunnerList.find().fetch());
+        
+        
+        var runnerFaction = FactionFactory.create();
+        _.each(runnerFaction, function(faction) {
+            FactionList.insert(faction);
         });
         
-        console.log('Runner Faction: ', RunnerList.find().fetch());
+        console.log('Runner Faction: ', FactionList.find().fetch());
     }
 });
 
 function clearDb(List) {
     for (var i = 0; i < List.length; i++) {
-        _.each(List[i].find().fetch(), function(corp) { // use lodash ._each to loop through each object in the collection
-            List[i].remove(corp._id); // delete the objects via their id
+        _.each(List[i].find().fetch(), function(identity) { // use lodash ._each to loop through each object in the collection
+            List[i].remove(identity._id); // delete the objects via their id
         });
     }
 }

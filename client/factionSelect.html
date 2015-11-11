@@ -1,0 +1,8 @@
+<template name="runnerFactionSelect">
+<h2>Select your Runner Faction</h2>
+<ul>
+    {{#each faction}}
+        <li><a href="/runner/{{_id}}"><button>{{label}}</button></a></li>
+    {{/each}}
+</ul>
+</template>

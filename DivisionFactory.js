@@ -5,11 +5,13 @@ DivisionFactory.create = function() {
             {
                 label: "Haas-Bioroid: Engineering the Future",
                 parent: 'haasBioroid',
+                imageURL: '/img/corp/haasBioroid/hbetf.png',
                 badPublicity: 0,
                 selected:false
             },{
                 label: "Haas-Bioroid: Stronger Together",
                 parent: 'haasBioroid',
+                imageURL: '/img/corp/haasBioroid/hbst.png',
                 badPublicity: 0,
                 selected:false
             },{

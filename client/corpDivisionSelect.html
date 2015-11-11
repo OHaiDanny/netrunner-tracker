@@ -1,13 +1,17 @@
 <template name="corpDivisionSelect">
-<h1>You have selected {{corp.label}}</h1>
-<p>Choose your division</p>
-<ul>
+<figure id="small_logo">
+    <img id="logo" src="/img/an_logo.png"/>
+    <figcaption>Tracker App</figcaption>
+</figure>
+<h1>You have selected <span class="{{corp.name}}">{{corp.label}}</span></h1>
+<p>Choose your division / subsidiary</p>
+<ul class="selectList" id="divisionSelect">
     {{> divisionSelect}}
 </ul>
 </template>
 
 <template name="divisionSelect">
     {{#each division}} 
-        <li><a href="/tracker/"><button>{{label}}</button></a></li>
+        <li><a href="/tracker/" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{parent}}">{{label}}</button></a></li>
     {{/each}}
 </template>
