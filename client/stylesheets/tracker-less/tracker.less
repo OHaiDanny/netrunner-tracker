@@ -38,7 +38,7 @@
 @teal: #0081A5;
 @gray: #DEDBD9;
 
-// corp primary colour
+// ----------------------------------------  Corp primary colour
 @hb:#E3DBE8;
 @jin:#F4D1C0;
 @nbn:#F3D925;
@@ -48,14 +48,33 @@
 .jinteki { color:@jin; }
 .nbn { color:@nbn; }
 .weyland { color:@weyland; }
-//
-// runner primary colour
 
+// ----------------------------------------  Runner primary colour
+@anarch:#DE5E3C;
+@criminal:#5377B6;
+@shaper:#829949;
 
+.anarch { color:@anarch;}
+.criminal { color:@criminal;}
+.shaper { color:@shaper;}
 
+// ----------------------------------------  Scroll-bar styling
+::-webkit-scrollbar {
+    height:8px;
+    background:none;
+}
 
-
-//
+::-webkit-scrollbar-track {
+    background:none;
+    -webkit-box-shadow:none;
+    border-radius:10px;
+}
+::-webkit-scrollbar-thumb {
+    background:@gray;
+    -webkit-box-shadow:inset -3px -1px 5px 0 darken(@gray, 30%);
+    border-radius:10px;
+    -webkit-border-radius:10px;
+}
 
 .psudo {
     content:'';
@@ -67,6 +86,11 @@
   &:before, &:after{ content:""; display:table; }
   &:after{ clear: both; }
 }
+
+
+
+
+
 
 
 
@@ -174,6 +198,10 @@ figcaption { // sub title underneath logo
 
 
 
+
+
+
+
 ////////////////////////////////////////////////////////////
 ///////////              HOME PAGE                //////////
 ////////////////////////////////////////////////////////////
@@ -217,7 +245,7 @@ figcaption { // sub title underneath logo
 //////////     CORP / DIVISION SELECT PAGE        //////////
 ////////////////////////////////////////////////////////////
 
-#corpSelect, #divisionSelect {
+#corpSelect, #divisionSelect, #factionSelect {
     li a {
         width:100%;
         height:100%;
@@ -240,16 +268,27 @@ figcaption { // sub title underneath logo
     width:25%;
     height:100px;
 }
-#divisionSelect li {
-    width:19%;
-    margin-right:1.25%;
-    height:150px;
+#factionSelect li {
+    width:33%;
+    height:125px;
+}
 
-    &:last-child{
-        margin-right:0;
-    }
-    a button {
-        bottom:-3.1em;
-        font-size:0.9em;
-    }
+#mask {
+    width:525px;
+    height:220px;
+    overflow-x:scroll;
+    overflow-y:hidden;
+}
+#divisionSelect {
+    position:relative;
+    width:999px;
+    li {
+        width:100px;
+        margin-right:0.45em;
+        height:150px;
+        a button {
+            bottom:-3.1em;
+            font-size:0.9em;
+        }
+    }   
 }

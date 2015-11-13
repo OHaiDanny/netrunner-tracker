@@ -8,28 +8,36 @@ CorpFactory.create = function (divisionList) {
         imageURL: '/img/corp/sm/HB_Logo.png',
         numOfClicks: 3,
         isSelected:false,
-        divisions: getDivision('haasBioroid', divisionList)
+        divisions: getDivision('haasBioroid', divisionList),
+        currentAgendaPts:0,
+        maxAgendaPts:7
       },{
         label: 'Jinteki',
         name: 'jinteki',
         imageURL: '/img/corp/sm/Jinteki_Logo.png',
         numOfClicks: 3,
         isSelected:false,
-        divisions: getDivision('jinteki', divisionList)
+        divisions: getDivision('jinteki', divisionList),
+        currentAgendaPts:0,
+        maxAgendaPts:7
       }, {
         label: 'NBN',
         name: 'nbn',
         imageURL: '/img/corp/sm/NBN_Logo.png',
         numOfClicks: 3,
         isSelected:false,
-        divisions: getDivision('nbn', divisionList)
+        divisions: getDivision('nbn', divisionList),
+        currentAgendaPts:0,
+        maxAgendaPts:7
       }, {
         label: 'Weyland Consortium',
         name: 'weyland',
         imageURL: '/img/corp/sm/Weyland_Logo.png',
         numOfClicks: 3,
         isSelected:false,
-        divisions: getDivision('weyland', divisionList)
+        divisions: getDivision('weyland', divisionList),
+        currentAgendaPts:0,
+        maxAgendaPts:7
       }
     ];
 }

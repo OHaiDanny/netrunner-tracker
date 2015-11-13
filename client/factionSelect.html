@@ -1,8 +1,13 @@
 <template name="runnerFactionSelect">
-<h2>Select your Runner Faction</h2>
-<ul>
-    {{#each faction}}
-        <li><a href="/runner/{{_id}}"><button>{{label}}</button></a></li>
-    {{/each}}
-</ul>
+    <figure id="small_logo">
+        <img id="logo" src="/img/an_logo.png"/>
+        <figcaption>Net-Tracker</figcaption>
+    </figure>
+    
+    <h2>Select your Runner Faction</h2>
+    <ul class="selectList" id="factionSelect">
+        {{#each faction}}
+            <li><a href="/runner/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{name}}">{{label}}</button></a></li>
+        {{/each}}
+    </ul>
 </template>
