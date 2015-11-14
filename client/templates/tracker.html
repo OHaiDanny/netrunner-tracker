@@ -1,0 +1,27 @@
+<template name="trackerMain">
+<div id="trackerContainer">
+    <div class="wrap">
+        <section id="creditsContainer" class="full-width">
+            <div id="totalCredits">
+                <div class="creditSymbol large">
+                    <span class="square"></span>
+                </div>
+                <strong>{{corp.credits}}</strong>
+            </div>
+        </section>
+        <section id="miscContainer" class="full-width">
+            <div id="badPublicity"></div>
+            <div id="clicks"></div>
+            <div id="agenda"></div>
+        </section>
+    </div>
+    {{> labels}}
+</div>
+</template>
+
+<template name="labels">
+    <section id="label">
+        <h1>{{corp.label}}</h1>
+        <p>{{division.label}}</p>
+    </section>
+</template>

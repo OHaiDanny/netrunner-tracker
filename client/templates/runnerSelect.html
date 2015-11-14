@@ -1,0 +1,19 @@
+<template name="runnerSelect">
+    <figure id="small_logo">
+        <img id="logo" src="/img/an_logo.png"/>
+        <figcaption>Net-Tracker</figcaption>
+    </figure>
+    <h1>You have selected the <span class="{{faction.name}}">{{faction.label}}</span></h1>
+    <p>Select your Runner</p>
+    <section id="mask">
+        <ul class="selectList" id="runnerSelect">
+            {{> selectRunner}}
+        </ul>
+    </section>
+</template>
+
+<template name="selectRunner">
+    {{#each runner}}
+        <li><a href="/tracker/" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{parent}}">{{name}}</button></a></li>
+    {{/each}}
+</template>

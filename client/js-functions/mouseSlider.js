@@ -1,15 +1,4 @@
-Template.corpDivisionSelect.onRendered(function() {
-    var mask = $('#mask');
-    var divisionList = $('.selectList');
-    var divisionList_width = 0;
-    
-    setWidth(divisionList, divisionList_width);
-    mouseSlide(divisionList);
-    
-
-});
-
-function setWidth(list, listWidth) {
+setWidth = function(list, listWidth) {
     list.find('li').each(function() {
         listWidth += $(this).width() + 7;
     });
@@ -17,7 +6,7 @@ function setWidth(list, listWidth) {
     list.width(listWidth);
 }
 
-function mouseSlide(list) {
+mouseSlide = function(list) {
     var currentMousePos = { // current mouse position set
         x:-1,
         y:-1

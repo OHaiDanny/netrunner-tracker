@@ -82,7 +82,7 @@ Meteor.methods({
     }
 });
 
-function clearDb(List) {
+clearDb = function(List) {
     for (var i = 0; i < List.length; i++) {
         _.each(List[i].find().fetch(), function(identity) { // use lodash ._each to loop through each object in the collection
             List[i].remove(identity._id); // delete the objects via their id
