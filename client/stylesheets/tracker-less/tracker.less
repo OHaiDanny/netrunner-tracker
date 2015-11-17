@@ -47,13 +47,13 @@
 .haasBioroid {
     color:@hb;
     &#trackerWrap{
-        border:2px solid @hb;
+        border:2px solid darken(@hb, 30%);
     }
 }
 .jinteki { 
     color:@jin;
     &#trackerWrap{
-        border:2px solid @jin;
+        border:2px solid darken(@jin, 30%);
     }
 }
 .nbn { 
@@ -65,7 +65,7 @@
 .weyland { 
     color:@weyland;
     &#trackerWrap{
-        border:2px solid @weyland;
+        border:2px solid darken(@weyland, 30%);
     }
 }
 
@@ -333,7 +333,7 @@ figcaption { // sub title underneath logo
     }
     .full-width{
         width:100%;
-        height:166px;
+        height:200px;
         margin-bottom:0.6em;
         display:block;
         //background:#404040;
@@ -346,12 +346,106 @@ figcaption { // sub title underneath logo
 #creditsContainer {
     padding:1em;
     .clearfix;
+    
     #totalCredits {
         float:left;
-        width:30%;
+        width:36%;
         height:100%;
         position:relative;
+        
+        strong {
+            position:absolute;
+            top:0px;
+            right:0.15em;
+            font-weight:800;
+            font-size:8em;
+            line-height:1;
+            width:90px;
+            color:white;
+        }
     }
+    
+    
+    #manageCredits{
+        float:left;
+        width:64%;
+        height:100%;
+        
+        #add, #subtract {
+            float:left;
+            width:50%;
+            height:100%;
+            position:relative;
+            label {
+                position:absolute;
+                top:0;
+                right:0.4em;
+                bottom:0;
+                color:white;
+                font-size:1.5em;
+                font-weight:300;
+            }
+        }
+        
+        #add {
+            margin-right:-10%;
+            .hexagon {
+                background:@teal;
+                 &:before {
+                    border-bottom:20px solid @teal;
+                }
+                &:after {
+                    border-top:20px solid @teal;
+                }
+            }
+        }
+        #subtract {
+            .hexagon {
+                background:@blue;
+                 &:before {
+                    border-bottom:20px solid @blue;
+                }
+                &:after {
+                    border-top:20px solid @blue;
+                }
+            }
+        }
+        
+        .hexagon {
+            position:absolute;
+            top:38px;
+            left:15px;
+            width:56px;
+            height:32px;
+            float:left;
+            &:before, &:after {
+                .psudo;
+                left:0;
+                border-left:28px solid transparent;
+                border-right:28px solid transparent;
+            }
+            &:before {
+                top:-20px; 
+            }
+            &:after {
+                bottom:-20px;
+            }
+            
+            &:nth-of-type(2) {
+                left:79px;
+            }
+            &:nth-of-type(3) {
+                left:47px;
+                top:98px;
+            }
+            &:nth-of-type(4) {
+                left:111px;
+                top:98px;
+            }
+        }
+    }
+    
+    
     .creditSymbol {
         width:50px;
         height:40px;
@@ -362,7 +456,7 @@ figcaption { // sub title underneath logo
         line-height:0;
         font-size:0;
         position:relative;
-        
+
         &:before, &:after {
             .psudo;
             left:2px;
@@ -382,7 +476,7 @@ figcaption { // sub title underneath logo
             border-bottom:5px solid white;
             border-right:5px solid white;
         }
-        
+
         .square {
             width:25px;
             height:15px;
@@ -392,22 +486,20 @@ figcaption { // sub title underneath logo
             left:-5px;
             -webkit-transform:skew(0deg, 30deg);
         }
-        
+
         &.large {
             -webkit-transform:scale(1.3);
             -webkit-transform-origin:left top;
             float:left;
             top:40px;
         }
-    }
-    strong {
-        position:absolute;
-        top:0px;
-        right:0.35em;
-        font-weight:800;
-        font-size:8em;
-        line-height:1;
-        color:white;
+        &.small {
+            -webkit-transform:scale(0.3);
+            -webkit-transform-origin:left top;
+            float:left;
+            top:10px;
+            left:8px;
+        }
     }
 }
 
@@ -417,18 +509,61 @@ figcaption { // sub title underneath logo
     text-align:right;
     z-index:10;
     bottom:0; right:0;
-    padding:0.4em 0.2em 0.4em 1em;
+    padding:0.4em 0.2em 0.4em 0em;
     background:@teal;
-    border-top-left-radius:40px;
+    &:before {
+        .psudo;
+        top:0;
+        left:-40px;
+        width:0;
+        height:0;
+        border-left:40px solid transparent;
+        border-bottom:40px solid @teal;
+    }
+    
+    &.haasBioroid {
+        background:darken(@hb, 30%);
+        &:before {
+            border-bottom-color:darken(@hb, 30%);
+        }
+        
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    &.jinteki {
+        background:darken(@jin, 30%);
+        &:before {
+            border-bottom-color:darken(@jin, 30%);
+        }
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    &.nbn {
+        background:@nbn;
+        &:before {
+            border-bottom-color:@nbn;
+        }
+        h1, p { color:#333;}
+    }
+    &.weyland {
+        background:darken(@weyland, 30%);
+        &:before {
+            border-bottom-color:darken(@weyland, 30%);
+        }
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    
+    
     h1, p {
         display:block;
         margin:0;
         padding:0;
     }
     h1 {
-        font-size:0.9em;
+        font-size:1.2em;
     }
     p {
-        font-size:0.68em;
+        font-size:0.8em;
     }
 }

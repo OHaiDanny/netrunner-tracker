@@ -8,6 +8,61 @@
                 </div>
                 <strong>{{corp.credits}}</strong>
             </div>
+            <div id="manageCredits">
+                <div id="add">
+                    <div class="hexagon" data-value="1">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>+1</label>
+                    </div>
+                    <div class="hexagon" data-value="2">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>+2</label>
+                    </div>
+                    <div class="hexagon" data-value="4">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>+4</label>
+                    </div>
+                    <div class="hexagon" data-value="5">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>+5</label>
+                    </div>
+                </div>
+                <div id="subtract">
+                    <div class="hexagon" data-value="-1">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>-1</label>
+                    </div>
+                    <div class="hexagon" data-value="-2">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>-2</label>
+                    </div>
+                    <div class="hexagon" data-value="-4">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>-4</label>
+                    </div>
+                    <div class="hexagon" data-value="-5">
+                        <div class="creditSymbol small">
+                            <span class="square"></span>
+                        </div>
+                        <label>-5</label>
+                    </div>
+                </div>
+            </div>
+
         </section>
         <section id="miscContainer" class="full-width">
             <div id="badPublicity"></div>
@@ -20,7 +75,7 @@
 </template>
 
 <template name="labels">
-    <section id="label">
+    <section id="label" class={{corp.name}}>
         <h1>{{corp.label}}</h1>
         <p>{{division.label}}</p>
     </section>

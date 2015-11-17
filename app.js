@@ -79,6 +79,13 @@ Meteor.methods({
         });
         
         console.log('Runner Faction: ', FactionList.find().fetch());
+    },
+    addCredits: function(corp, value) {
+        var id = corp._id;
+        var credits_prev = corp.credits;
+        CorpList.update(id, {
+           $set: {credits: credits_prev + value}
+        });
     }
 });
 
