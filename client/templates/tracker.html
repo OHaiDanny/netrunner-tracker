@@ -9,69 +9,86 @@
                 <strong>{{corp.credits}}</strong>
             </div>
             <div id="manageCredits">
-                <div id="add">
-                    <div class="hexagon" data-value="1">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>+1</label>
-                    </div>
-                    <div class="hexagon" data-value="2">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>+2</label>
-                    </div>
-                    <div class="hexagon" data-value="4">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>+4</label>
-                    </div>
-                    <div class="hexagon" data-value="5">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>+5</label>
-                    </div>
-                </div>
-                <div id="subtract">
-                    <div class="hexagon" data-value="-1">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>-1</label>
-                    </div>
-                    <div class="hexagon" data-value="-2">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>-2</label>
-                    </div>
-                    <div class="hexagon" data-value="-4">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>-4</label>
-                    </div>
-                    <div class="hexagon" data-value="-5">
-                        <div class="creditSymbol small">
-                            <span class="square"></span>
-                        </div>
-                        <label>-5</label>
-                    </div>
-                </div>
+                {{> credits}}
             </div>
 
         </section>
         <section id="miscContainer" class="full-width">
-            <div id="badPublicity"></div>
+            <div id="badPublicity">
+                {{> badPublicity}}
+            </div>
             <div id="clicks"></div>
             <div id="agenda"></div>
         </section>
     </div>
     {{> labels}}
 </div>
+</template>
+
+<template name="credits">
+    <div id="add">
+        <div class="hexagon credit" data-value="1">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>+1</label>
+        </div>
+        <div class="hexagon credit" data-value="2">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>+2</label>
+        </div>
+        <div class="hexagon credit" data-value="4">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>+4</label>
+        </div>
+        <div class="hexagon credit" data-value="5">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>+5</label>
+        </div>
+    </div>
+    <div id="subtract">
+        <div class="hexagon credit" data-value="-1">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>-1</label>
+        </div>
+        <div class="hexagon credit" data-value="-2">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>-2</label>
+        </div>
+        <div class="hexagon credit" data-value="-4">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>-4</label>
+        </div>
+        <div class="hexagon credit" data-value="-5">
+            <div class="creditSymbol small">
+                <span class="square"></span>
+            </div>
+            <label>-5</label>
+        </div>
+    </div>
+</template>
+
+<template name="badPublicity">
+    <img src="/img/badPub/badPub.png" width="75px">
+    <p>{{division.badPublicity}}</p>
+    <div class="hexagon badPub" data-value="1">
+        <label>+</label>
+    </div>
+    <div class="hexagon badPub" data-value="-1">
+        <label>-</label>
+    </div>
 </template>
 
 <template name="labels">

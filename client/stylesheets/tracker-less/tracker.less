@@ -343,6 +343,29 @@ figcaption { // sub title underneath logo
 }
 
 // -------------------------------------------- Credits Container
+
+#creditsContainer, #miscContainer {
+    .hexagon {
+        position:absolute;
+        top:38px;
+        left:15px;
+        width:56px;
+        height:32px;
+        float:left;
+        &:before, &:after {
+            .psudo;
+            left:0;
+            border-left:28px solid transparent;
+            border-right:28px solid transparent;
+        }
+        &:before {
+            top:-20px; 
+        }
+        &:after {
+            bottom:-20px;
+        }
+    }
+}
 #creditsContainer {
     padding:1em;
     .clearfix;
@@ -366,7 +389,7 @@ figcaption { // sub title underneath logo
     }
     
     
-    #manageCredits{
+    #manageCredits {
         float:left;
         width:64%;
         height:100%;
@@ -412,25 +435,6 @@ figcaption { // sub title underneath logo
         }
         
         .hexagon {
-            position:absolute;
-            top:38px;
-            left:15px;
-            width:56px;
-            height:32px;
-            float:left;
-            &:before, &:after {
-                .psudo;
-                left:0;
-                border-left:28px solid transparent;
-                border-right:28px solid transparent;
-            }
-            &:before {
-                top:-20px; 
-            }
-            &:after {
-                bottom:-20px;
-            }
-            
             &:nth-of-type(2) {
                 left:79px;
             }
@@ -502,6 +506,52 @@ figcaption { // sub title underneath logo
         }
     }
 }
+
+#miscContainer {
+    > div {
+        float:left;
+        height:135px;
+        position:relative;
+    }
+    #badPublicity {
+        width:25%;
+        padding:0.5em;
+        border:1px solid #ababab;
+        p {
+            position:absolute;
+            top:30px;
+            right:15px;
+            font-size:3.5em;
+            line-height:0;
+            font-weight:400;
+        }
+        .hexagon {
+            top:auto;
+            left:auto;
+            right:0;
+            bottom:1.1em;
+            background:@teal;
+            -webkit-transform:scale(0.6);
+            &:before {
+                border-bottom:20px solid @teal;
+            }
+            &:after {
+                border-top:20px solid @teal;
+            }
+            
+            label {
+                text-align:center;
+                display:block;
+                font-size:4em;
+                line-height:0.3;
+            }
+            &:nth-of-type(1) {
+                right:38px;
+            }
+        }
+    }   
+}
+
 
 #label {
     position:absolute;

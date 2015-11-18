@@ -86,6 +86,13 @@ Meteor.methods({
         CorpList.update(id, {
            $set: {credits: credits_prev + value}
         });
+    },
+    badPublicity: function(division, value) {
+        var id = division._id;
+        var badPub_prev = division.badPublicity;
+        DivisionList.update(id, {
+           $set: {badPublicity: badPub_prev + value}
+        });
     }
 });
 
