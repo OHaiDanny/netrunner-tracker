@@ -3,8 +3,16 @@ Template.corpDivisionSelect.onRendered(function() {
     var divisionList = $('.selectList');
     var divisionList_width = 0;
     
-    setWidth(divisionList, divisionList_width);
-    mouseSlide(divisionList);
+    if(window.innerHeight < window.innerWidth){
+        setWidth(divisionList, divisionList_width);
+        //mouseSlide(divisionList);
+    }
+});
+
+Template.corpDivisionSelect.events({
+   'click a': function() {
+       Meteor.call('corpSelected', this);
+   } 
 });
 //
 //Template.divisionSelect.helpers({

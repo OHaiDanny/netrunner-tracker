@@ -3,6 +3,14 @@ Template.runnerSelect.onRendered(function() {
     var runnerList = $('.selectList');
     var runnerList_width = 0;
     
-    setWidth(runnerList, runnerList_width);
-    mouseSlide(runnerList);
+    if(window.innerHeight < window.innerWidth){
+        setWidth(runnerList, runnerList_width);
+        mouseSlide(runnerList);
+    }
+});
+
+Template.runnerSelect.events({
+   'click a':function() {
+       Meteor.call('runnerSelected', this);
+   } 
 });

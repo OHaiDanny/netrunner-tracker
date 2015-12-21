@@ -6,7 +6,7 @@
                 <div class="creditSymbol large">
                     <span class="square"></span>
                 </div>
-                <strong>{{corp.credits}}</strong>
+                <strong>{{parent.credits}}</strong>
             </div>
             <div id="manageCredits">
                 {{> credits}}
@@ -14,11 +14,35 @@
 
         </section>
         <section id="miscContainer" class="full-width">
-            <div id="badPublicity">
-                {{> badPublicity}}
+            {{#if isCorp}}
+                <div id="badPublicity">
+                    {{> badPublicity}}
+                </div>
+                <div id="agenda">
+                    {{> agenda}}
+                </div>
+            {{else}}
+                <!-- Add Runner Stats here -->
+                <div id="tag">
+                    {{> tag}}
+                </div>
+                <div id="agenda">
+                    {{> agenda}}
+                </div>
+                <div class="middleSect">
+                    <div id="link">
+                        {{> link}}
+                    </div>
+                    <div id="mu">
+                        {{> mu}}
+                    </div>
+                </div>
+            {{/if}}
+            <div id="clicks">
+                <div id="click-container">
+                    {{> clicks}}
+                </div>
             </div>
-            <div id="clicks"></div>
-            <div id="agenda"></div>
         </section>
     </div>
     {{> labels}}
@@ -80,20 +104,95 @@
     </div>
 </template>
 
+
+<!-- Corporate specific trackers -->
 <template name="badPublicity">
-    <img src="/img/badPub/badPub.png" width="75px">
-    <p>{{division.badPublicity}}</p>
-    <div class="hexagon badPub" data-value="1">
-        <label>+</label>
+    <div id="badPubTotal">
+        <img class="token svg" src="/img/badPub/badPub.svg">
+        <label class="total">{{child.badPublicity}}</label>
     </div>
-    <div class="hexagon badPub" data-value="-1">
-        <label>-</label>
+    <div class="badPubButton plus" data-value="1" >
+        <img src="/img/badPub/badPub.svg" />
+        <label><i class="fa fa-plus"></i></label>
     </div>
+    <div class="badPubButton minus" data-value="-1">
+        <img src="/img/badPub/badPub.svg" />
+        <label><i class="fa fa-minus"></i></label>
+    </div>
+</template>
+
+<template name="agenda">
+    <div id="agendaTotal">
+        <img class="token svg" src="/img/agenda/agenda.svg">
+        <label class="total">{{parent.currentAgendaPts}}</label>
+    </div>
+    <div class="agendaButton plus" data-value="1">
+        <img src="/img/agenda/agenda_small.svg" />
+        <label><i class="fa fa-caret-up"></i></label>    
+    </div>
+    <div class="agendaButton minus" data-value="-1">
+        <img src="/img/agenda/agenda_small.svg" />
+        <label><i class="fa fa-caret-down"></i></label>
+    </div>
+</template>
+<!-- END: Corporate specific trackers -->
+
+<!-- Runner specific trackers -->
+<template name="tag">
+    <div id="tagTotal">
+        <img class="token svg" src="/img/tag/tag.svg"/>
+        <label class="total">{{parent.tags}}</label>
+    </div>
+    <div class="tagButton plus" data-value="1">
+        <img src="/img/tag/tag.svg" />
+        <label><i class="fa fa-plus"></i></label>
+    </div>
+    <div class="tagButton minus" data-value="-1">
+        <img src="/img/tag/tag.svg" />
+        <label><i class="fa fa-minus"></i></label>
+    </div>
+</template>
+
+<template name="mu">
+    <div id="muTotal">
+        <img class="token svg" src="/img/mu/mu.svg"/>
+        <label class="total">{{parent.memoryUnit}}</label>
+    </div>
+    <div class="muButton plus" data-value="1">
+        <label><i class="fa fa-plus"></i></label>
+    </div>
+    <div class="muButton minus" data-value="-1">
+        <label><i class="fa fa-minus"></i></label>
+    </div>
+</template>
+
+<template name="link">
+    <div id="linkTotal">
+        <img class="token svg" src="/img/link/link.svg"/>
+        <label class="total">{{child.link}}</label>
+    </div>
+    <div class="linkButton plus" data-value="1">
+        <label><i class="fa fa-plus"></i></label>
+    </div>
+    <div class="linkButton minus" data-value="-1">
+        <label><i class="fa fa-minus"></i></label>
+    </div>
+</template>
+
+<!-- END: Runner specific trackers -->
+
+
+<template name="clicks">
+    {{#each parent.clicks}}
+        <div class="click">
+            <img src="/img/click/click.png" data-position="{{clickIndex}}" />
+        </div>
+    {{/each}}
 </template>
 
 <template name="labels">
     <section id="label" class={{corp.name}}>
-        <h1>{{corp.label}}</h1>
-        <p>{{division.label}}</p>
+        <h1>{{parent.label}}</h1>
+        <p>{{child.label}}</p>
     </section>
 </template>

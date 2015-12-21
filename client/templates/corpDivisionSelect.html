@@ -3,8 +3,10 @@
         <img id="logo" src="/img/an_logo.png"/>
         <figcaption>Net-Tracker</figcaption>
     </figure>
+<!--
     <h1>You have selected <span class="{{corp.name}}">{{corp.label}}</span></h1>
     <p>Choose your division / subsidiary</p>
+-->
     <section id="mask">
         <ul class="selectList" id="divisionSelect">
             {{> divisionSelect}}
@@ -14,6 +16,6 @@
 
 <template name="divisionSelect">
     {{#each division}} 
-        <li><a href="/tracker/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{parent}}">{{label}}</button></a></li>
+        <li><a href="/tracker/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:cover;"></a></li>
     {{/each}}
 </template>

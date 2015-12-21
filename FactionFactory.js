@@ -1,16 +1,17 @@
 FactionFactory = {};
 
-FactionFactory.create = function () {
+FactionFactory.create = function (runnerList) {
     return [
         {
             label: "Anarch Faction",
             name:'anarch',
             imageURL: '/img/runner/Anarch_Logo.png',
             credits: 5,
-            numOfClicks: 4,
+            clicks: [1,2,3,4],
             curentClicks: 0,
             tags: 0,
-            memoryUnit: 0,
+            memoryUnit: 4,
+            runners: getRunners('anarch', runnerList),
             currentAgendaPts:0,
             maxAgendaPts:7
         }, {
@@ -18,10 +19,11 @@ FactionFactory.create = function () {
             name:'criminal',
             imageURL: '/img/runner/Criminal_Logo.png',
             credits: 5,
-            numOfClicks: 4,
+            clicks: [1,2,3,4],
             curentClicks: 0,
             tags: 0,
-            memoryUnit: 0,
+            memoryUnit: 4,
+            runners: getRunners('criminal', runnerList),
             currentAgendaPts:0,
             maxAgendaPts:7
         }, {
@@ -29,11 +31,21 @@ FactionFactory.create = function () {
             name: 'shaper',
             imageURL: '/img/runner/Shaper_Logo.png',
             credits: 5,
-            numOfClicks: 4,
+            clicks: [1,2,3,4],
             curentClicks: 0,
             tags: 0,
+            memoryUnit:4,
+            runners: getRunners('shaper', runnerList),
             currentAgendaPts:0,
             maxAgendaPts:7
         }
     ];
+}
+
+function getRunners(name, runnerList) {
+    var runnerID = [];
+    _.each(runnerList.find({parent: name}).fetch(), function(runner) {
+        runnerID.push(runner._id);
+    });
+    return runnerID;
 }

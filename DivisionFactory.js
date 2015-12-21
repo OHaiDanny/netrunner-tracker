@@ -99,6 +99,12 @@ DivisionFactory.create = function() {
             badPublicity: 0,
             selected:false
         },{
+            label: "NBN: The World is Yours*",
+            parent: 'nbn',
+            imageURL: '/img/corp/nbn/nbn_twiy.png',
+            badPublicity: 0,
+            selected:false
+        },{
             label: "Near Earth Hub: Broadcast Centre",
             parent: 'nbn',
             imageURL: '/img/corp/nbn/nbn_neh.png',

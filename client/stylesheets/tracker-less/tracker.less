@@ -1,3 +1,9 @@
+// STYLES ARE LANDSCAPE BY DEFAULT; ADDED MEDIA QUERY FOR PORTRAIT
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
 @font-face {
     font-family: 'Alegreya Sans SC';
     src: url('/font/alegreyasanssc-thin-webfont.eot');
@@ -78,6 +84,25 @@
 .criminal { color:@criminal;}
 .shaper { color:@shaper;}
 
+.anarch { 
+    color:@anarch;
+    &#trackerWrap{
+        border:2px solid @anarch;
+    }
+}
+.criminal { 
+    color:@criminal;
+    &#trackerWrap{
+        border:2px solid @criminal;
+    }
+}
+.shaper { 
+    color:@shaper;
+    &#trackerWrap{
+        border:2px solid @shaper;
+    }
+}
+
 // ----------------------------------------  Scroll-bar styling
 ::-webkit-scrollbar {
     height:8px;
@@ -120,9 +145,9 @@
 }
 html {
     // Nexus 5 portrait and landscape - testing only
-    width:598px;
-    height:360px;
-    background:white;    
+    width:100%;
+    height:100%;
+    background:white;
     font-family: 'Alegreya Sans SC', sans-serif;
 }
 .container {
@@ -215,6 +240,12 @@ figcaption { // sub title underneath logo
     }
 }
 
+@media only screen and (orientation:portrait) {
+    figcaption {
+        text-align:center !important;
+    }
+}
+
 
 
 
@@ -261,6 +292,16 @@ figcaption { // sub title underneath logo
     }
 }
 
+@media only screen and (orientation:portrait) {
+    #selectSide {
+        a {
+            width:100%;
+            margin-right:0;
+            margin-bottom:1em;
+        }
+    }
+}
+
 ////////////////////////////////////////////////////////////
 //////////     CORP + RUNNER SELECT PAGES         //////////
 ////////////////////////////////////////////////////////////
@@ -268,11 +309,10 @@ figcaption { // sub title underneath logo
 #corpSelect, #divisionSelect, #factionSelect, #runnerSelect {
     li a {
         width:100%;
-        height:100%;
-        background-position:center;
+        background-position:center !important;
         button {
             position:absolute;
-            bottom:-2em;
+            top:88px;
             left:0;
             right:0;
             width:100%;
@@ -281,6 +321,11 @@ figcaption { // sub title underneath logo
             font-weight:300;
             height:40px;
         }
+    }
+}
+#corpSelect, #factionSelect {
+    li a {
+        height:100%;
     }
 }
 
@@ -294,23 +339,69 @@ figcaption { // sub title underneath logo
 }
 
 #mask {
-    width:525px;
-    height:220px;
-    overflow-x:scroll;
-    overflow-y:hidden;
+//    width:525px;
+//    height:220px;
+    height: 70%;
+    width: 100%;
+    overflow: scroll;
 }
 #divisionSelect, #runnerSelect {
-    position:relative;
-    width:999px;
+    height: 100%;
+    overflow: auto;
+    .clearfix;
     li {
-        width:100px;
-        margin-right:0.45em;
-        height:150px;
+        width:150px;
+        margin-right:0.6857%;
+        height:93%;
+        a {
+            height:100%;
+        }
         a button {
             bottom:-3.1em;
             font-size:0.9em;
         }
+        &:last-of-type {
+            margin-right:0;
+        }
     }   
+}
+
+@media only screen and (orientation:portrait) {
+    #corpSelect li {
+        width: 50%;
+        margin-bottom:15%;
+    }
+    
+    #factionSelect li {
+        width:50%;
+        margin-bottom:10%;
+        a button {
+            top:110px;
+        }
+    }
+    
+    #mask {
+    //    width:525px;
+    //    height:220px;
+        height: 80%;
+    }
+    
+    #divisionSelect, #runnerSelect {
+        li {
+            float:left;
+            width:49%;
+            height:35.1674%;
+            margin-right:2%;
+            margin-bottom:25%;
+            &:nth-of-type(2n+2) {
+                margin-right:0;
+            }
+            
+            a {
+                height:139.3333%;
+            }
+        }
+    }
 }
 
 
@@ -333,12 +424,15 @@ figcaption { // sub title underneath logo
     }
     .full-width{
         width:100%;
-        height:200px;
-        margin-bottom:0.6em;
+        height:60%;
         display:block;
         //background:#404040;
         //border:1px solid #505050;
         //border-radius:0.75em;
+        &:last-of-type {
+            height:40%;
+            margin-bottom:0;
+        }
     }
 }
 
@@ -372,14 +466,14 @@ figcaption { // sub title underneath logo
     
     #totalCredits {
         float:left;
-        width:36%;
+        width:32%;
         height:100%;
         position:relative;
         
         strong {
             position:absolute;
-            top:0px;
-            right:0.15em;
+            top:0;
+            left:52%;
             font-weight:800;
             font-size:8em;
             line-height:1;
@@ -388,10 +482,9 @@ figcaption { // sub title underneath logo
         }
     }
     
-    
     #manageCredits {
         float:left;
-        width:64%;
+        width:68%;
         height:100%;
         
         #add, #subtract {
@@ -411,7 +504,6 @@ figcaption { // sub title underneath logo
         }
         
         #add {
-            margin-right:-10%;
             .hexagon {
                 background:@teal;
                  &:before {
@@ -513,44 +605,226 @@ figcaption { // sub title underneath logo
         height:135px;
         position:relative;
     }
-    #badPublicity {
-        width:25%;
-        padding:0.5em;
-        border:1px solid #ababab;
-        p {
+    #badPublicity, #agenda, #tag, #mu, #link {
+        img {
+            width:100%;
+        }
+        label {
             position:absolute;
-            top:30px;
-            right:15px;
-            font-size:3.5em;
+            left:0; right:0;
+            top:-0.9rem;
+            bottom:0;
+            width:100%;
+            height:1px;
+            text-align:center;
             line-height:0;
-            font-weight:400;
+            font-size:3.5em;
+            margin:auto;
+            line-height:0;
+            color:white;
+            text-shadow: black 0 0 2px,rgba(0,0,0,0.65) 0 0 20px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
-        .hexagon {
-            top:auto;
+    }
+    #badPublicity, #tag {
+        width:20%;
+        height:100%;
+        margin-right:5%;
+        padding:0.5em;
+        
+        #badPubTotal, #tagTotal {
+            position:relative;
+        }
+        
+        #tagTotal label {
+            right:15%;
+            bottom:45%;
             left:auto;
-            right:0;
-            bottom:1.1em;
-            background:@teal;
-            -webkit-transform:scale(0.6);
-            &:before {
-                border-bottom:20px solid @teal;
-            }
-            &:after {
-                border-top:20px solid @teal;
-            }
-            
+            top:auto;
+            text-align:right;
+        }
+        
+        .badPubButton, .tagButton {
+            float:left;
+            width:48%;
+            position:relative;
             label {
-                text-align:center;
-                display:block;
-                font-size:4em;
-                line-height:0.3;
-            }
-            &:nth-of-type(1) {
-                right:38px;
+                font-size:1rem;
             }
         }
-    }   
+        .anarch &,
+        .criminal &,
+        .shaper & {
+            margin-right:1%;
+        }
+    }
+    #agenda {
+        width:18%;
+        margin-right:7%;
+        #agendaTotal {
+            position:relative;
+        }
+        .agendaButton {
+            float:left;
+            width:40%;
+            margin-right:20%;
+            position:relative;
+            &:last-child {
+                margin-right:0;
+            }
+            label {
+                bottom:60%;
+                font-size:1.8rem;
+                font-weight:400;
+                color:white;
+            }
+        }
+        .anarch &,
+        .criminal &,
+        .shaper & {
+            margin-right:6%;
+        }
+    }
+    .middleSect {
+        width:20%;
+        #mu img {
+            width:10vw;
+        }
+        #link img {
+            width:7vw;
+        }
+        #mu, #link {
+            position:relative;
+            #muTotal label{
+                text-align:left;
+                color:black;
+                top:38%;
+                left:10%;
+                bottom:auto;
+                right:auto;
+                font-size:6vw;
+                text-shadow:none;
+            }
+            #linkTotal label {
+                text-align:inherit;
+                top:-0.3rem;
+                left:38%;
+                font-size:2.6em;
+            }
+            .muButton label i,
+            .linkButton label i {
+                position:relative;
+                right:3.5vw;
+            }
+            .muButton.plus label,
+            .linkButton.plus label {
+                text-align:right;
+                margin:0;   
+                top:15%;
+                right:0;
+                font-size:3vw;
+            }
+            .muButton.minus label,
+            .linkButton.minus label {
+                text-align:right;
+                margin:0;
+                top:auto;
+                bottom:40%;
+                font-size:3vw;
+            }
+        }
+    }
+    
+    #clicks {
+        width:50%;
+        #click-container {
+            position:absolute;
+            top:20%;
+            right:0;
+            width:100%;
+            
+            img {
+                width:100%;
+                margin:0 auto;
+                display:block;
+            }
+            .click {
+                float:right;
+                width:15%;
+                padding:1.2vw 0;
+                margin-right:6%;
+                font-size:16px;
+                line-height:0;
+                position:relative;
+                background:#555;
+                &:before, &:after {
+                    .psudo;
+                    top:0;
+                    border-top:5vw solid transparent;
+                    border-bottom:5vw solid transparent;
+                }
+                &:before {
+                    left:0;
+                    transform:translateX(-100%);
+                    border-right:2vw solid #555;
+                }
+                &:after {
+                    right:0;
+                    transform:translateX(100%);
+                    border-left:2vw solid #555;
+                }
+                
+                &:nth-of-type(2n) {
+                    bottom:1.8rem;
+                }
+            }
+            .click.on {
+                background:@teal;
+                &:before{
+                    border-right-color:@teal;
+                }
+                &:after {
+                    border-left-color:@teal;
+                }
+            }
+            .click.on.done {
+                background:lighten(@teal,20%);
+                &:before{
+                    border-right-color:lighten(@teal,20%);
+                }
+                &:after {
+                    border-left-color:lighten(@teal,20%);
+                }
+            }
+        }
+        .anarch &,
+        .criminal &,
+        .shaper & {
+            width:35%;
+            #click-container {
+                top:30%;
+            }
+            #click-container .click {
+                width:14%;
+                &:before, &:after {
+                    .psudo;
+                    top:0;
+                    border-top:3.6vw solid transparent;
+                    border-bottom:3.6vw solid transparent;
+                }                
+                &:nth-of-type(2n) {
+                    bottom:1.9rem;
+                }
+            }
+        }
+    }
 }
+
 
 
 #label {
@@ -571,7 +845,7 @@ figcaption { // sub title underneath logo
         border-bottom:40px solid @teal;
     }
     
-    &.haasBioroid {
+    .haasBioroid & {
         background:darken(@hb, 30%);
         &:before {
             border-bottom-color:darken(@hb, 30%);
@@ -580,7 +854,7 @@ figcaption { // sub title underneath logo
         h1 { color:#333;}
         p { color:white;}
     }
-    &.jinteki {
+    .jinteki & {
         background:darken(@jin, 30%);
         &:before {
             border-bottom-color:darken(@jin, 30%);
@@ -588,17 +862,41 @@ figcaption { // sub title underneath logo
         h1 { color:#333;}
         p { color:white;}
     }
-    &.nbn {
+    .nbn & {
         background:@nbn;
         &:before {
             border-bottom-color:@nbn;
         }
         h1, p { color:#333;}
     }
-    &.weyland {
+    .weyland & {
         background:darken(@weyland, 30%);
         &:before {
             border-bottom-color:darken(@weyland, 30%);
+        }
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    .anarch & {
+        background:@anarch;
+        &:before {
+            border-bottom-color:@anarch;
+        }
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    .criminal & {
+        background:@criminal;
+        &:before {
+            border-bottom-color:@criminal;
+        }
+        h1 { color:#333;}
+        p { color:white;}
+    }
+    .shaper & {
+        background:@shaper;
+        &:before {
+            border-bottom-color:@shaper;
         }
         h1 { color:#333;}
         p { color:white;}

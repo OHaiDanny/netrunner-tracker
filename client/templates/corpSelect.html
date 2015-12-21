@@ -7,7 +7,7 @@
     <h1>Select Your Corporation</h1>
     <ul class="selectList" id="corpSelect">
         {{#each names}}
-            <li><a href="/corp/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:contain;"><button class="{{name}}">{{label}}</button></a></li>
+            <li><a href="/corp/{{_id}}" style="background:url('{{imageURL}}') no-repeat; background-size:cover;"><button class="{{name}}">{{label}}</button></a></li>
         {{/each}}
     </ul>
 </template>
