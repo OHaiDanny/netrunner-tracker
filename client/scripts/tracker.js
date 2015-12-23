@@ -1,8 +1,12 @@
+var isCorp = false;
+
 Template.trackerMain.helpers({
    isCorp: function() {
        if (CorpList.findOne({_id: this.parent._id})) {
+           isCorp = true;
            return true;
        } else {
+           isCorp = false
            return false;
        }
    } 
@@ -34,11 +38,11 @@ Template.badPublicity.events({
 
 Template.agenda.events({
     'click .agendaButton.plus': function (event) {
-        Meteor.call('agenda', this.parent, $(event.currentTarget).data("value"));
+        Meteor.call('agenda', this.parent, $(event.currentTarget).data("value"), isCorp);
     },
     'click .agendaButton.minus': function (event) {
         if (this.parent.currentAgendaPts != 0) {
-            Meteor.call('agenda', this.parent, $(event.currentTarget).data("value"));
+            Meteor.call('agenda', this.parent, $(event.currentTarget).data("value"), isCorp);
         }
     }
 });

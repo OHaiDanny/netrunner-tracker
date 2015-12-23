@@ -433,6 +433,13 @@ figcaption { // sub title underneath logo
             height:40%;
             margin-bottom:0;
         }
+        
+        @media only screen and (orientation:portrait) {
+            height:62%;
+            &:last-of-type {
+                height:38%;
+            }
+        }
     }
 }
 
@@ -441,22 +448,20 @@ figcaption { // sub title underneath logo
 #creditsContainer, #miscContainer {
     .hexagon {
         position:absolute;
-        top:38px;
-        left:15px;
         width:56px;
         height:32px;
         float:left;
         &:before, &:after {
             .psudo;
-            left:0;
+            left:0; right:0;
             border-left:28px solid transparent;
             border-right:28px solid transparent;
         }
         &:before {
-            top:-20px; 
+            top:-18px; 
         }
         &:after {
-            bottom:-20px;
+            bottom:-18px;
         }
     }
 }
@@ -473,7 +478,7 @@ figcaption { // sub title underneath logo
         strong {
             position:absolute;
             top:0;
-            left:52%;
+            left:40%;
             font-weight:800;
             font-size:8em;
             line-height:1;
@@ -486,6 +491,7 @@ figcaption { // sub title underneath logo
         float:left;
         width:68%;
         height:100%;
+        padding:2em;
         
         #add, #subtract {
             float:left;
@@ -500,43 +506,133 @@ figcaption { // sub title underneath logo
                 color:white;
                 font-size:1.5em;
                 font-weight:300;
+//                -webkit-touch-callout: none;
+//                -webkit-user-select: none;
+//                -khtml-user-select: none;
+//                -moz-user-select: none;
+//                -ms-user-select: none;
+//                user-select: none;
             }
         }
         
         #add {
             .hexagon {
                 background:@teal;
-                 &:before {
-                    border-bottom:20px solid @teal;
+                &:before {border-bottom:18px solid @teal;}
+                &:after {border-top:18px solid @teal;}
+                
+                .haasBioroid & {
+                    background:darken(@hb, 30%);
+                    &:before {border-bottom-color:darken(@hb, 30%);}
+                    &:after {border-top-color:darken(@hb, 30%);}
                 }
-                &:after {
-                    border-top:20px solid @teal;
+                .jinteki & {
+                    background:darken(@jin, 30%);
+                    &:before {border-bottom-color:darken(@jin, 30%);}
+                    &:after {border-top-color:darken(@jin, 30%);}
+                }
+                .nbn & {
+                    .creditSymbol {
+                        border-color:black;
+                        .square {
+                            background:black;
+                        }
+                        &:before, &:after {
+                            border-color:black;
+                        }
+                    }
+                    background:@nbn;
+                    label {color:black;}
+                    &:before {border-bottom-color:@nbn;}
+                    &:after {border-top-color:@nbn;}
+                }
+                .weyland & {
+                    background:darken(@weyland, 30%);
+                    &:before {border-bottom-color:darken(@weyland, 30%);}
+                    &:after {border-top-color:darken(@weyland, 30%);}
+                }
+                .anarch & {
+                    background:@anarch;
+                    &:before {border-bottom-color:@anarch;}
+                    &:after {border-top-color:@anarch;}
+                }
+                .criminal & {
+                    background:@criminal;
+                    &:before {border-bottom-color:@criminal;}
+                    &:after {border-top-color:@criminal;}
+                }
+                .shaper & {
+                    background:@shaper;
+                    &:before {border-bottom-color:@shaper;}
+                    &:after {border-top-color:@shaper;}
                 }
             }
         }
         #subtract {
             .hexagon {
                 background:@blue;
-                 &:before {
-                    border-bottom:20px solid @blue;
+                &:before {border-bottom:18px solid @blue;}
+                &:after {border-top:18px solid @blue;}
+                
+                .haasBioroid & {
+                    background:darken(@hb, 15%);
+                    &:before {border-bottom-color:darken(@hb, 15%);}
+                    &:after {border-top-color:darken(@hb, 15%);}
                 }
-                &:after {
-                    border-top:20px solid @blue;
+                .jinteki & {
+                    background:darken(@jin, 15%);
+                    &:before {border-bottom-color:darken(@jin, 15%);}
+                    &:after {border-top-color:darken(@jin, 15%);}
+                }
+                .nbn & {
+                    .creditSymbol {
+                        border-color:black;
+                        .square {
+                            background:black;
+                        }
+                        &:before, &:after {
+                            border-color:black;
+                        }
+                    }
+                    label {color:black;}
+                    background:lighten(@nbn, 15%);
+                    &:before {border-bottom-color:lighten(@nbn, 15%);}
+                    &:after {border-top-color:lighten(@nbn, 15%);}
+                }
+                .weyland & {
+                    background:darken(@weyland, 15%);
+                    &:before {border-bottom-color:darken(@weyland, 15%);}
+                    &:after {border-top-color:darken(@weyland, 15%);}
+                }
+                .anarch & {
+                    background:lighten(@anarch, 15%);
+                    &:before {border-bottom-color:lighten(@anarch, 15%);}
+                    &:after {border-top-color:lighten(@anarch, 15%);}
+                }
+                .criminal & {
+                    background:lighten(@criminal, 15%);
+                    &:before {border-bottom-color:lighten(@criminal, 15%);}
+                    &:after {border-top-color:lighten(@criminal, 15%);}
+                }
+                .shaper & {
+                    background:lighten(@shaper, 15%);
+                    &:before {border-bottom-color:lighten(@shaper, 15%);}
+                    &:after {border-top-color:lighten(@shaper, 15%);}
                 }
             }
         }
         
         .hexagon {
             &:nth-of-type(2) {
-                left:79px;
+                left:60px;
             }
             &:nth-of-type(3) {
-                left:47px;
-                top:98px;
+                left:30px;
+                top:54px;
             }
             &:nth-of-type(4) {
-                left:111px;
-                top:98px;
+                left:calc(60px + 30px);
+                top:54px;
             }
         }
     }
@@ -597,6 +693,28 @@ figcaption { // sub title underneath logo
             left:8px;
         }
     }
+    
+    @media only screen and (orientation:portrait) {
+        #totalCredits {
+            padding-left:1.2rem;
+            width:100%;
+            float:none;
+            height:auto;
+            .clearfix;
+            strong {
+                position:relative;
+                left:auto;
+                margin-left:10%;
+            }
+        }
+        #manageCredits {
+            padding:0;
+            margin-left:-5px;
+            margin-top:2.5rem;
+            width:100%;
+            height:100px;
+        }
+    }
 }
 
 #miscContainer {
@@ -623,12 +741,12 @@ figcaption { // sub title underneath logo
             line-height:0;
             color:white;
             text-shadow: black 0 0 2px,rgba(0,0,0,0.65) 0 0 20px;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
+//            -webkit-touch-callout: none;
+//            -webkit-user-select: none;
+//            -khtml-user-select: none;
+//            -moz-user-select: none;
+//            -ms-user-select: none;
+//            user-select: none;
         }
     }
     #badPublicity, #tag {
@@ -764,7 +882,7 @@ figcaption { // sub title underneath logo
                 background:#555;
                 &:before, &:after {
                     .psudo;
-                    top:0;
+                    top:0; bottom:0;
                     border-top:5vw solid transparent;
                     border-bottom:5vw solid transparent;
                 }
@@ -823,11 +941,114 @@ figcaption { // sub title underneath logo
             }
         }
     }
+    
+    @media only screen and (orientation:portrait) {
+        #badPublicity, #tag, #agenda {
+            width:50%;
+            margin-right:0;
+            height:45%;
+            img {
+                width:45%;
+            }
+            label {
+                text-align:right;
+                left:auto;
+                right:1rem;
+            }
+            .anarch &, .criminal &, .shaper & {
+                margin-right:0;
+            }
+        }
+        .middleSect {
+            width:36%;
+            height:auto;
+            margin-top:1em;
+            #mu, #link {
+                #muTotal {
+                    img {
+                        width:13vw;
+                    }
+                    label {
+                        font-size:2em;
+                    }
+                }
+                #linkTotal{
+                    img {
+                        width:13vw;
+                    }
+                    label {
+                        font-size:3em;
+                        width:auto;
+                        left:40%;
+                    }
+                }
+                .linkButton.plus label,
+                .linkButton.minus label {
+                    font-size:1rem;
+                }
+                .muButton.plus label,
+                .muButton.minus label {
+                    font-size:1rem;
+                }
+            }
+        }
+        #clicks {
+            float:none;
+            position:absolute;
+            height:75px;
+            bottom:0.5rem; left:0; right:0;
+            width:80%;
+            #click-container {
+                top:auto;
+                bottom:0;
+            }
+            #click-container .click {
+                &:before, &:after {
+                    border-top:7vw solid transparent;
+                    border-bottom:7vw solid transparent;
+                }
+                &:before {
+                    border-right-width:3.5vw;
+                }
+                &:after {
+                    border-left-width:3.5vw;
+                }
+            }
+            
+            .anarch &,
+            .criminal &,
+            .shaper & {
+                float:left;
+                width:64%;
+                left:auto;
+                #click-container .click {
+                    &:before, &:after {
+                        border-top:5.7vw solid transparent;
+                        border-bottom:5.7vw solid transparent;
+                    }
+                    &:before {
+                        border-right-width:3vw;
+                    }
+                    &:after {
+                        border-left-width:3vw;
+                    }
+                    &:nth-of-type(2n) {
+                        bottom:1.2rem;
+                    }
+                }
+            }
+        }
+    }
 }
 
-
-
 #label {
+    @media only screen and (orientation:portrait) {
+        top:0; bottom:auto;
+        &:before {
+            -webkit-transform:scaleY(-1);
+            transform:scaleY(-1);
+        }
+    }
     position:absolute;
     display:inline;
     text-align:right;
@@ -838,11 +1059,11 @@ figcaption { // sub title underneath logo
     &:before {
         .psudo;
         top:0;
-        left:-40px;
+        left:-39px;
         width:0;
         height:0;
-        border-left:40px solid transparent;
-        border-bottom:40px solid @teal;
+        border-left:39px solid transparent;
+        border-bottom:39px solid @teal;
     }
     
     .haasBioroid & {

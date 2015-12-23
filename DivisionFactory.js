@@ -3,13 +3,13 @@ DivisionFactory = {}
 DivisionFactory.create = function() {
     return [
         {
-            label: "Haas-Bioroid: Engineering the Future",
+            label: "Engineering the Future",
             parent: 'haasBioroid',
             imageURL: '/img/corp/haasBioroid/hb_etf.png',
             badPublicity: 0,
             selected:false
         },{
-            label: "Haas-Bioroid: Stronger Together",
+            label: "Stronger Together",
             parent: 'haasBioroid',
             imageURL: '/img/corp/haasBioroid/hb_st.png',
             badPublicity: 0,
@@ -45,13 +45,13 @@ DivisionFactory.create = function() {
             badPublicity: 0,
             selected:false
         },{
-            label: "Jinteki: Personal Evolution",
+            label: "Personal Evolution",
             parent: 'jinteki',
             imageURL: '/img/corp/jinteki/j_pe.png',
             badPublicity: 0,
             selected:false
         },{
-            label: "Jinteki: Replicating Perfection",
+            label: "Replicating Perfection",
             parent: 'jinteki',
             imageURL: '/img/corp/jinteki/j_rp.png',
             badPublicity: 0,
@@ -93,13 +93,13 @@ DivisionFactory.create = function() {
             badPublicity: 0,
             selected:false
         },{
-            label: "NBN: Making News",
+            label: "Making News",
             parent: 'nbn',
             imageURL: '/img/corp/nbn/nbn_mn.png',
             badPublicity: 0,
             selected:false
         },{
-            label: "NBN: The World is Yours*",
+            label: "The World is Yours*",
             parent: 'nbn',
             imageURL: '/img/corp/nbn/nbn_twiy.png',
             badPublicity: 0,
@@ -135,13 +135,13 @@ DivisionFactory.create = function() {
             badPublicity: 0,
             selected:false
         },{
-            label: "Weyland Consortium: Building A Better World",
+            label: "Building A Better World",
             parent: 'weyland',
             imageURL: '/img/corp/weyland/wc_babw.png',
             badPublicity: 0,
             selected:false
         },{
-            label: "Weyland Consortium: Because We Built It",
+            label: "Because We Built It",
             parent: 'weyland',
             imageURL: '/img/corp/weyland/wc_bwbi.png',
             badPublicity: 0,

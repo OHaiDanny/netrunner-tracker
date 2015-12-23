@@ -127,12 +127,20 @@ Meteor.methods({
             }
         });
     },
-    agenda: function (corp, value) {
-        CorpList.update(corp._id, {
-            $set: {
-                currentAgendaPts: corp.currentAgendaPts + value
-            }
-        });
+    agenda: function (parent, value, isCorp) {
+        if (isCorp) {
+            CorpList.update(parent._id, {
+                $set: {
+                    currentAgendaPts: parent.currentAgendaPts + value
+                }
+            });
+        } else {
+            FactionList.update(parent._id, {
+                $set: {
+                    currentAgendaPts: parent.currentAgendaPts + value
+                }
+            });
+        }
     },
     tag: function (faction, value) {
         FactionList.update(faction._id, {
