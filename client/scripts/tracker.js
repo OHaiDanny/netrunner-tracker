@@ -11,16 +11,21 @@ Template.trackerMain.helpers({
        }
    } 
 });
+Template.trackerMain.events({
+    'click #homeButton': function() {
+        window.location.href = "/";
+    }
+});
 
 Template.credits.events({
     'click #add .credit': function (event) {
-        Meteor.call("credits", this.parent, $(event.currentTarget).data("value"));
+        Meteor.call("credits", this.child, $(event.currentTarget).data("value"));
     },
     'click #subtract .credit': function (event) {
-        if (this.parent.credits + $(event.currentTarget).data("value") <= 0) {
-            Meteor.call("zeroCredits", this.parent);
+        if (this.child.credits + $(event.currentTarget).data("value") <= 0) {
+            Meteor.call("zeroCredits", this.child);
         } else {
-            Meteor.call("credits", this.parent, $(event.currentTarget).data("value"));
+            Meteor.call("credits", this.child, $(event.currentTarget).data("value"));
         }
     }
 });

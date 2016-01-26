@@ -45,21 +45,21 @@
 @gray: #DEDBD9;
 
 // ----------------------------------------  Corp primary colour
-@hb:#E3DBE8;
-@jin:#F4D1C0;
+@hb:darken(#E3DBE8, 30%);
+@jin:darken(#F4D1C0, 30%);
 @nbn:#F3D925;
-@weyland:#C8D0C4;
+@weyland:darken(#C8D0C4, 30%);
 
 .haasBioroid {
     color:@hb;
     &#trackerWrap{
-        border:2px solid darken(@hb, 30%);
+        border:2px solid @hb;
     }
 }
 .jinteki { 
     color:@jin;
     &#trackerWrap{
-        border:2px solid darken(@jin, 30%);
+        border:2px solid @jin;
     }
 }
 .nbn { 
@@ -71,7 +71,7 @@
 .weyland { 
     color:@weyland;
     &#trackerWrap{
-        border:2px solid darken(@weyland, 30%);
+        border:2px solid @weyland;
     }
 }
 
@@ -79,10 +79,12 @@
 @anarch:#DE5E3C;
 @criminal:#5377B6;
 @shaper:#829949;
+@neutral:#777;
 
 .anarch { color:@anarch;}
 .criminal { color:@criminal;}
 .shaper { color:@shaper;}
+.neutral { color:@neutral;}
 
 .anarch { 
     color:@anarch;
@@ -100,6 +102,12 @@
     color:@shaper;
     &#trackerWrap{
         border:2px solid @shaper;
+    }
+}
+.neutral { 
+    color:@neutral;
+    &#trackerWrap{
+        border:2px solid @neutral;
     }
 }
 
@@ -133,6 +141,26 @@
 }
 
 
+// ----------------------------------------- Colour theming for tracker page
+.bg(@color) {
+    background:@color;
+}
+.label(@color) {
+    background:@color;
+    #triangle:before {border-right-color:@color;}
+}
+.credit(@color) {
+    background:@color;
+    &:before {border-bottom-color:@color;}
+    &:after {border-top-color:@color;}
+}
+.click(@color) {
+    background:@color;
+    &:before{border-right-color:@color;}
+    &:after {border-left-color:@color;}
+}
+
+
 
 
 
@@ -142,6 +170,7 @@
 
 * {
     box-sizing: border-box;
+    -webkit-text-size-adjust: none;
 }
 html {
     // Nexus 5 portrait and landscape - testing only
@@ -212,7 +241,7 @@ figcaption { // sub title underneath logo
     #large_logo & {
         text-align:left;
         font-size:1.1em;
-        margin-bottom:5em;
+        //margin-bottom:5em;
     }
     #small_logo & {
         text-align:center;
@@ -258,7 +287,7 @@ figcaption { // sub title underneath logo
 ////////////////////////////////////////////////////////////
 
 #selectSide {
-    margin: 0.8em 0 0;
+    margin: 10vw 0 0;
     .clearfix;
     a {
         position:relative;
@@ -291,9 +320,34 @@ figcaption { // sub title underneath logo
         }
     }
 }
+#caption {
+    text-align:right;
+    color:white;
+    font-weight:100;
+    font-size:1.3em;
+    small {
+        font-style:italic;
+    }
+}
+footer {
+    position:absolute;
+    top:1em;
+    right:2em;
+    color:white;
+}
 
 @media only screen and (orientation:portrait) {
+    #caption {
+        margin:3em 0 15vh;
+        text-align:center;
+    }
+    footer {
+        top:auto;
+        bottom:2em;
+        right:2em;
+    }
     #selectSide {
+        margin:0 0 0;
         a {
             width:100%;
             margin-right:0;
@@ -333,9 +387,14 @@ figcaption { // sub title underneath logo
     width:25%;
     height:100px;
 }
-#factionSelect li {
-    width:33%;
-    height:125px;
+#factionSelect  {
+    li {
+        width:25%;
+        height:100px;
+    }
+    li a button {
+        margin-top:2em;
+    }
 }
 
 #mask {
@@ -369,13 +428,14 @@ figcaption { // sub title underneath logo
 @media only screen and (orientation:portrait) {
     #corpSelect li {
         width: 50%;
-        margin-bottom:15%;
+        margin-bottom:12vh;
     }
     
     #factionSelect li {
         width:50%;
-        margin-bottom:10%;
+        margin-bottom:12vh;
         a button {
+            margin-top:0;
             top:110px;
         }
     }
@@ -424,88 +484,132 @@ figcaption { // sub title underneath logo
     }
     .full-width{
         width:100%;
-        height:60%;
+        height:55%;
         display:block;
         //background:#404040;
         //border:1px solid #505050;
         //border-radius:0.75em;
         &:last-of-type {
-            height:40%;
+            height:45%;
             margin-bottom:0;
         }
         
         @media only screen and (orientation:portrait) {
-            height:62%;
+            height:57%;
             &:last-of-type {
-                height:38%;
+                height:43%;
             }
         }
     }
 }
 
+#homeButton {
+    position:absolute;
+    color:white;
+    top:0;
+    right:0;
+    font-size:1.5rem;
+    padding:0 0.2em 0 0.3em;
+    z-index:999;
+    @media only screen and (orientation:portrait) {
+        top:auto;right:auto;
+        bottom:0;
+        right:0;
+        font-size:2rem;
+    }
+    
+    .haasBioroid & {.bg(@hb);}
+    .jinteki & {.bg(@jin);}
+    .nbn & {.bg(@nbn);color:black;}
+    .weyland & {.bg(@weyland);}
+    .anarch & {.bg(@anarch);}
+    .criminal & {.bg(@criminal);}
+    .shaper & {.bg(@shaper);}
+    .neutral & {.bg(@neutral);}
+}
+
 // -------------------------------------------- Credits Container
 
-#creditsContainer, #miscContainer {
-    .hexagon {
-        position:absolute;
-        width:56px;
-        height:32px;
-        float:left;
+#creditsContainer .hexagon {
+    position:absolute;
+    width:12vw;
+    height:12vh;
+    float:left;
+    &:before, &:after {
+        .psudo;
+        left:0; right:0;
+        border-left:6vw solid transparent;
+        border-right:6vw solid transparent;
+    }
+    &:before {
+        top:0;
+        transform:translateY(-100%);
+        border-bottom-style:solid;
+        border-bottom-width:6vh;
+    }
+    &:after {
+        bottom:0;
+        transform:translateY(100%);
+        border-top-style:solid;
+        border-top-width:6vh;
+    }
+    
+    @media only screen and (orientation:portrait) {
+        width:12vh;
+        height:7vh;
         &:before, &:after {
-            .psudo;
-            left:0; right:0;
-            border-left:28px solid transparent;
-            border-right:28px solid transparent;
+            border-left:6vh solid transparent;
+            border-right:6vh solid transparent;
         }
         &:before {
-            top:-18px; 
+            top:0;
+            border-bottom-width:6vw;
         }
         &:after {
-            bottom:-18px;
+            bottom:0;
+            border-top-width:6vw;
         }
     }
 }
 #creditsContainer {
-    padding:1em;
     .clearfix;
     
     #totalCredits {
         float:left;
-        width:32%;
+        width:30%;
+        margin-right:3%;
         height:100%;
         position:relative;
         
         strong {
-            position:absolute;
-            top:0;
-            left:40%;
-            font-weight:800;
-            font-size:8em;
-            line-height:1;
-            width:90px;
+            float:left;
+            position:relative;
+            left:15px;
+            font-weight:400;
+            font-size:18vw;
+            line-height:0.7;
             color:white;
         }
     }
     
     #manageCredits {
         float:left;
-        width:68%;
+        width:67%;
         height:100%;
-        padding:2em;
+        padding-top:0.8em;
         
         #add, #subtract {
-            float:left;
-            width:50%;
-            height:100%;
+            width:100%;
+            height:50%;
+            line-height:100%;
             position:relative;
             label {
                 position:absolute;
-                top:0;
-                right:0.4em;
-                bottom:0;
+                top:1.5vh; bottom:1.5vh;
+                right:5px;
                 color:white;
-                font-size:1.5em;
-                font-weight:300;
+                font-size:6.5vw;
+                font-weight:900;
 //                -webkit-touch-callout: none;
 //                -webkit-user-select: none;
 //                -khtml-user-select: none;
@@ -516,21 +620,10 @@ figcaption { // sub title underneath logo
         }
         
         #add {
+            top:4vh;
             .hexagon {
-                background:@teal;
-                &:before {border-bottom:18px solid @teal;}
-                &:after {border-top:18px solid @teal;}
-                
-                .haasBioroid & {
-                    background:darken(@hb, 30%);
-                    &:before {border-bottom-color:darken(@hb, 30%);}
-                    &:after {border-top-color:darken(@hb, 30%);}
-                }
-                .jinteki & {
-                    background:darken(@jin, 30%);
-                    &:before {border-bottom-color:darken(@jin, 30%);}
-                    &:after {border-top-color:darken(@jin, 30%);}
-                }
+                .haasBioroid & {.credit(@hb);}
+                .jinteki & {.credit(@jin);}
                 .nbn & {
                     .creditSymbol {
                         border-color:black;
@@ -541,49 +634,32 @@ figcaption { // sub title underneath logo
                             border-color:black;
                         }
                     }
-                    background:@nbn;
                     label {color:black;}
-                    &:before {border-bottom-color:@nbn;}
-                    &:after {border-top-color:@nbn;}
+                    .credit(@nbn);
                 }
-                .weyland & {
-                    background:darken(@weyland, 30%);
-                    &:before {border-bottom-color:darken(@weyland, 30%);}
-                    &:after {border-top-color:darken(@weyland, 30%);}
+                .weyland & {.credit(@weyland);}
+                .anarch & {.credit(@anarch);}
+                .criminal & {.credit(@criminal);}
+                .shaper & {.credit(@shaper);}
+                .neutral & {.credit(@neutral);}
+                
+                &:nth-of-type(2) {
+                    left:14vw;
                 }
-                .anarch & {
-                    background:@anarch;
-                    &:before {border-bottom-color:@anarch;}
-                    &:after {border-top-color:@anarch;}
+                &:nth-of-type(3) {
+                    left:28vw;
                 }
-                .criminal & {
-                    background:@criminal;
-                    &:before {border-bottom-color:@criminal;}
-                    &:after {border-top-color:@criminal;}
-                }
-                .shaper & {
-                    background:@shaper;
-                    &:before {border-bottom-color:@shaper;}
-                    &:after {border-top-color:@shaper;}
+                &:nth-of-type(4) {
+                    left:42vw;
                 }
             }
         }
         #subtract {
+            //transform:translateX(7vw);
             .hexagon {
-                background:@blue;
-                &:before {border-bottom:18px solid @blue;}
-                &:after {border-top:18px solid @blue;}
-                
-                .haasBioroid & {
-                    background:darken(@hb, 15%);
-                    &:before {border-bottom-color:darken(@hb, 15%);}
-                    &:after {border-top-color:darken(@hb, 15%);}
-                }
-                .jinteki & {
-                    background:darken(@jin, 15%);
-                    &:before {border-bottom-color:darken(@jin, 15%);}
-                    &:after {border-top-color:darken(@jin, 15%);}
-                }
+                left:7.25vw;
+                .haasBioroid & {.credit(lighten(@hb, 10%));}
+                .jinteki & {.credit(lighten(@jin, 10%));}
                 .nbn & {
                     .creditSymbol {
                         border-color:black;
@@ -595,55 +671,32 @@ figcaption { // sub title underneath logo
                         }
                     }
                     label {color:black;}
-                    background:lighten(@nbn, 15%);
-                    &:before {border-bottom-color:lighten(@nbn, 15%);}
-                    &:after {border-top-color:lighten(@nbn, 15%);}
+                    .credit(lighten(@nbn, 10%));
                 }
-                .weyland & {
-                    background:darken(@weyland, 15%);
-                    &:before {border-bottom-color:darken(@weyland, 15%);}
-                    &:after {border-top-color:darken(@weyland, 15%);}
+                .weyland & {.credit(lighten(@weyland, 10%));}
+                .anarch & {.credit(lighten(@anarch, 10%));}
+                .criminal & {.credit(lighten(@criminal, 10%));}
+                .shaper & {.credit(lighten(@shaper, 10%));}
+                .neutral & {.credit(lighten(@neutral, 10%));}
+                
+                &:nth-of-type(2) {
+                    left:21.25vw;
                 }
-                .anarch & {
-                    background:lighten(@anarch, 15%);
-                    &:before {border-bottom-color:lighten(@anarch, 15%);}
-                    &:after {border-top-color:lighten(@anarch, 15%);}
+                &:nth-of-type(3) {
+                    left:35.25vw;
                 }
-                .criminal & {
-                    background:lighten(@criminal, 15%);
-                    &:before {border-bottom-color:lighten(@criminal, 15%);}
-                    &:after {border-top-color:lighten(@criminal, 15%);}
+                &:nth-of-type(4) {
+                    left:49.25vw;
                 }
-                .shaper & {
-                    background:lighten(@shaper, 15%);
-                    &:before {border-bottom-color:lighten(@shaper, 15%);}
-                    &:after {border-top-color:lighten(@shaper, 15%);}
-                }
-            }
-        }
-        
-        .hexagon {
-            &:nth-of-type(2) {
-                left:60px;
-            }
-            &:nth-of-type(3) {
-                left:30px;
-                top:54px;
-            }
-            &:nth-of-type(4) {
-                left:calc(60px + 30px);
-                top:54px;
             }
         }
     }
-    
-    
     .creditSymbol {
-        width:50px;
-        height:40px;
+        width:30px;
+        height:29px;
         background:none;
-        border-right:5px solid white;
-        border-left:5px solid white;
+        border-right:4px solid white;
+        border-left:4px solid white;
         text-align:left;
         line-height:0;
         font-size:0;
@@ -651,52 +704,53 @@ figcaption { // sub title underneath logo
 
         &:before, &:after {
             .psudo;
-            left:2px;
-            width:31px;
-            height:31px;
+            width:17px;
+            height:17px;
+            left:0.05vw;
             -webkit-transform:rotate(45deg);
         }
         &:before {
-            top:-18px;
+            top:-11px;
             bottom:auto;
-            border-top:5px solid white;
-            border-left:5px solid white;
+            border-top:4px solid white;
+            border-left:4px solid white;
         }
         &:after {
             top:auto;
-            bottom:-18px;
-            border-bottom:5px solid white;
-            border-right:5px solid white;
+            bottom:-11px;
+            border-bottom:4px solid white;
+            border-right:4px solid white;
         }
 
         .square {
-            width:25px;
-            height:15px;
+            width:12px;
+            height:12px;
             background:white;
             position:absolute;
-            top:7px;
-            left:-5px;
+            top:4px;
+            left:-1px;
             -webkit-transform:skew(0deg, 30deg);
         }
 
         &.large {
-            -webkit-transform:scale(1.3);
+            -webkit-transform:scale(0.75);
             -webkit-transform-origin:left top;
             float:left;
-            top:40px;
+            top:30px;
+            left:10px;
         }
         &.small {
-            -webkit-transform:scale(0.3);
+            -webkit-transform:scale(0.46);
             -webkit-transform-origin:left top;
             float:left;
-            top:10px;
-            left:8px;
+            top:3.75vh;
+            bottom:3.75vh;
+            left:5px;
         }
     }
     
     @media only screen and (orientation:portrait) {
         #totalCredits {
-            padding-left:1.2rem;
             width:100%;
             float:none;
             height:auto;
@@ -704,15 +758,54 @@ figcaption { // sub title underneath logo
             strong {
                 position:relative;
                 left:auto;
-                margin-left:10%;
+                margin-left:5%;
+                font-size:18vh;
             }
         }
         #manageCredits {
             padding:0;
             margin-left:-5px;
-            margin-top:2.5rem;
             width:100%;
             height:100px;
+            #add, #subtract {position:absolute; height:auto;}
+            #add {
+                top:25vh;
+                .hexagon {
+                    left:auto;
+                    right:66vw;
+                    &:nth-of-type(2) {
+                        left:auto;
+                        right:45vw;
+                    }
+                    &:nth-of-type(3) {
+                        left:auto;
+                        right:24vw;
+                    }
+                    &:nth-of-type(4) {
+                        left:auto;
+                        right:3vw;
+                    }
+                }
+            }
+            #subtract {
+                top:37vh;
+                .hexagon {
+                    left:auto;
+                    right:77vw;
+                    &:nth-of-type(2) {
+                        left:auto;
+                        right:56vw;
+                    }
+                    &:nth-of-type(3) {
+                        left:auto;
+                        right:35vw;
+                    }
+                    &:nth-of-type(4) {
+                        left:auto;
+                        right:14vw;
+                    }
+                }
+            }
         }
     }
 }
@@ -724,21 +817,18 @@ figcaption { // sub title underneath logo
         position:relative;
     }
     #badPublicity, #agenda, #tag, #mu, #link {
+        height:auto;
         img {
             width:100%;
         }
         label {
             position:absolute;
             left:0; right:0;
-            top:-0.9rem;
-            bottom:0;
+            top:11vh;
             width:100%;
-            height:1px;
             text-align:center;
             line-height:0;
-            font-size:3.5em;
-            margin:auto;
-            line-height:0;
+            font-size:11vw;
             color:white;
             text-shadow: black 0 0 2px,rgba(0,0,0,0.65) 0 0 20px;
 //            -webkit-touch-callout: none;
@@ -750,9 +840,8 @@ figcaption { // sub title underneath logo
         }
     }
     #badPublicity, #tag {
-        width:20%;
-        height:100%;
-        margin-right:5%;
+        width:22.5%;
+        margin-right:1.5%;
         padding:0.5em;
         
         #badPubTotal, #tagTotal {
@@ -760,30 +849,40 @@ figcaption { // sub title underneath logo
         }
         
         #tagTotal label {
-            right:15%;
-            bottom:45%;
-            left:auto;
-            top:auto;
-            text-align:right;
+            text-align:center;
         }
         
         .badPubButton, .tagButton {
-            float:left;
-            width:48%;
-            position:relative;
+            position:absolute;
+            height:100%;
+            width:2em;
+            top:0;
+            bottom:0;
+            &.plus {
+                left:-5vw;
+            }
+            &.minus {
+                right:-5vw;
+            }
             label {
-                font-size:1rem;
+                top:2.2rem;
+                -webkit-border-radius:3px;
+                border-radius:3px;
+                padding:0.3em 0 0.2em;
+                font-size:4.8vh;
+                background:#ababab;
             }
         }
         .anarch &,
         .criminal &,
-        .shaper & {
+        .shaper &,
+        .neutral & {
             margin-right:1%;
         }
     }
     #agenda {
-        width:18%;
-        margin-right:7%;
+        width:20%;
+        margin-right:0%;
         #agendaTotal {
             position:relative;
         }
@@ -801,11 +900,6 @@ figcaption { // sub title underneath logo
                 font-weight:400;
                 color:white;
             }
-        }
-        .anarch &,
-        .criminal &,
-        .shaper & {
-            margin-right:6%;
         }
     }
     .middleSect {
@@ -859,11 +953,11 @@ figcaption { // sub title underneath logo
     }
     
     #clicks {
-        width:50%;
+        width:70%;
         #click-container {
             position:absolute;
-            top:20%;
-            right:0;
+            top:40%;
+            left:5%;
             width:100%;
             
             img {
@@ -872,10 +966,10 @@ figcaption { // sub title underneath logo
                 display:block;
             }
             .click {
-                float:right;
+                float:left;
                 width:15%;
                 padding:1.2vw 0;
-                margin-right:6%;
+                margin-right:5.5%;
                 font-size:16px;
                 line-height:0;
                 position:relative;
@@ -883,60 +977,59 @@ figcaption { // sub title underneath logo
                 &:before, &:after {
                     .psudo;
                     top:0; bottom:0;
-                    border-top:5vw solid transparent;
-                    border-bottom:5vw solid transparent;
+                    border-top:6.5vw solid transparent;
+                    border-bottom:6.5vw solid transparent;
                 }
                 &:before {
                     left:0;
                     transform:translateX(-100%);
-                    border-right:2vw solid #555;
+                    border-right:3vw solid #555;
                 }
                 &:after {
                     right:0;
                     transform:translateX(100%);
-                    border-left:2vw solid #555;
+                    border-left:3vw solid #555;
                 }
                 
                 &:nth-of-type(2n) {
-                    bottom:1.8rem;
+                    bottom:6.5vw;
                 }
             }
             .click.on {
-                background:@teal;
-                &:before{
-                    border-right-color:@teal;
-                }
-                &:after {
-                    border-left-color:@teal;
-                }
+                .haasBioroid & {.click(@hb);}
+                .jinteki & {.click(@jin);}
+                .nbn & {.click(@nbn);}
+                .weyland & {.click(@weyland);}
+                .anarch & {.click(@anarch);}
+                .criminal & {.click(@criminal);}
+                .shaper & {.click(@shaper);}
+                .neutral & {.click(@neutral);}
             }
             .click.on.done {
-                background:lighten(@teal,20%);
-                &:before{
-                    border-right-color:lighten(@teal,20%);
-                }
-                &:after {
-                    border-left-color:lighten(@teal,20%);
-                }
+                .haasBioroid & {.click(lighten(@hb, 10%));}
+                .jinteki & {.click(lighten(@jin, 10%));}
+                .nbn & {.click(lighten(@nbn, 10%));}
+                .weyland & {.click(lighten(@weyland, 10%));}
+                .anarch & {.click(lighten(@anarch, 10%));}
+                .criminal & {.click(lighten(@criminal, 10%));}
+                .shaper & {.click(lighten(@shaper, 10%));}
+                .neutral & {.click(lighten(@neutral, 10%));}
             }
         }
         .anarch &,
         .criminal &,
-        .shaper & {
-            width:35%;
-            #click-container {
-                top:30%;
-            }
+        .shaper &,
+        .neutral & {
+            //width:35%;
             #click-container .click {
-                width:14%;
                 &:before, &:after {
                     .psudo;
                     top:0;
-                    border-top:3.6vw solid transparent;
-                    border-bottom:3.6vw solid transparent;
+                    border-top:6.5vw solid transparent;
+                    border-bottom:6.5vw solid transparent;
                 }                
                 &:nth-of-type(2n) {
-                    bottom:1.9rem;
+                    bottom:7vw;
                 }
             }
         }
@@ -944,96 +1037,136 @@ figcaption { // sub title underneath logo
     
     @media only screen and (orientation:portrait) {
         #badPublicity, #tag, #agenda {
-            width:50%;
-            margin-right:0;
-            height:45%;
+            float:right;
+            top:6vh;
+            width:30%;
+            height:20vh;
+            margin:auto;
+            text-align:center;
             img {
-                width:45%;
+                width:100%;
+            }
+            
+            .badPubButton, .tagButton {
+                margin:auto;
+                height:2em;
+                width:50%;
+                &.plus {
+                    left:0;
+                    right:0;
+                    top:-8vh;
+                    margin:0 auto;
+                    label {top:0;}
+                }
+                &.minus {
+                    right:0;
+                    left:0;
+                    top:auto;
+                    bottom:0vh;
+                    label {top:0;}
+                }
             }
             label {
-                text-align:right;
-                left:auto;
-                right:1rem;
-            }
-            .anarch &, .criminal &, .shaper & {
-                margin-right:0;
+                top:5.5vh;
             }
         }
-        .middleSect {
-            width:36%;
-            height:auto;
-            margin-top:1em;
-            #mu, #link {
-                #muTotal {
-                    img {
-                        width:13vw;
-                    }
-                    label {
-                        font-size:2em;
-                    }
-                }
-                #linkTotal{
-                    img {
-                        width:13vw;
-                    }
-                    label {
-                        font-size:3em;
-                        width:auto;
-                        left:40%;
-                    }
-                }
-                .linkButton.plus label,
-                .linkButton.minus label {
-                    font-size:1rem;
-                }
-                .muButton.plus label,
-                .muButton.minus label {
-                    font-size:1rem;
-                }
-            }
-        }
+//        .middleSect {
+//            width:36%;
+//            height:auto;
+//            margin-top:1em;
+//            #mu, #link {
+//                #muTotal {
+//                    img {
+//                        width:13vw;
+//                    }
+//                    label {
+//                        font-size:2em;
+//                    }
+//                }
+//                #linkTotal{
+//                    img {
+//                        width:13vw;
+//                    }
+//                    label {
+//                        font-size:3em;
+//                        width:auto;
+//                        left:40%;
+//                    }
+//                }
+//                .linkButton.plus label,
+//                .linkButton.minus label {
+//                    font-size:1rem;
+//                }
+//                .muButton.plus label,
+//                .muButton.minus label {
+//                    font-size:1rem;
+//                }
+//            }
+//        }
         #clicks {
             float:none;
             position:absolute;
             height:75px;
-            bottom:0.5rem; left:0; right:0;
-            width:80%;
+            bottom:0;left:0;right:0;
+            width:100%;
+            margin:auto;
             #click-container {
                 top:auto;
                 bottom:0;
+                left:auto;
+                padding:0 0 1rem 2rem;
             }
             #click-container .click {
+                width:20%;
+                position:absolute;
+                bottom:3vh;
+                left:8vw;
                 &:before, &:after {
-                    border-top:7vw solid transparent;
-                    border-bottom:7vw solid transparent;
+                    border-top:11vw solid transparent;
+                    border-bottom:11vw solid transparent;
                 }
                 &:before {
-                    border-right-width:3.5vw;
+                    border-right-width:5vw;
                 }
                 &:after {
-                    border-left-width:3.5vw;
+                    border-left-width:5vw;
+                }
+                &:nth-of-type(2) {
+                    bottom:18.5vh;
+                }
+                &:nth-of-type(3) {
+                    bottom:11vh;
+                    left:34.5vw;
+                    
                 }
             }
             
             .anarch &,
             .criminal &,
-            .shaper & {
-                float:left;
-                width:64%;
-                left:auto;
+            .shaper &,
+            .neutral & {
                 #click-container .click {
+                    width:16%;
                     &:before, &:after {
-                        border-top:5.7vw solid transparent;
-                        border-bottom:5.7vw solid transparent;
+                        border-top:5.8vh solid transparent;
+                        border-bottom:5.8vh solid transparent;
                     }
                     &:before {
-                        border-right-width:3vw;
+                        border-right-width:3vh;
                     }
                     &:after {
-                        border-left-width:3vw;
+                        border-left-width:3vh;
                     }
-                    &:nth-of-type(2n) {
-                        bottom:1.2rem;
+                    &:nth-of-type(2) {
+                        bottom:16vh;
+                    }
+                    &:nth-of-type(3) {
+                        bottom:9.5vh;
+                        left:30vw;
+                    }
+                    &:nth-of-type(4) {
+                        bottom:22.5vh;
+                        left:30vw;
                     }
                 }
             }
@@ -1042,13 +1175,6 @@ figcaption { // sub title underneath logo
 }
 
 #label {
-    @media only screen and (orientation:portrait) {
-        top:0; bottom:auto;
-        &:before {
-            -webkit-transform:scaleY(-1);
-            transform:scaleY(-1);
-        }
-    }
     position:absolute;
     display:inline;
     text-align:right;
@@ -1056,74 +1182,73 @@ figcaption { // sub title underneath logo
     bottom:0; right:0;
     padding:0.4em 0.2em 0.4em 0em;
     background:@teal;
-    &:before {
-        .psudo;
-        top:0;
-        left:-39px;
-        width:0;
-        height:0;
-        border-left:39px solid transparent;
-        border-bottom:39px solid @teal;
+    
+    #triangle {
+        height: 0;
+        overflow: hidden;
+        position:absolute;
+        bottom:-2px;
+        width:7.4vw;
+        padding-top:7.4vw;
+        left:-7.4vw;
+        &:before {
+            .psudo;
+            margin-top:-500px;
+            border-top:500px solid transparent;
+            border-right:500px solid @teal;
+        }
+    }
+    @media only screen and (orientation:portrait) {
+        top:0; bottom:auto;
+        #triangle {
+            width:12.3vw;
+            padding-top:12.3vw;
+            left:-12.3vw;
+            top:-2px; bottom:auto;
+            -webkit-transform:scaleY(-1);
+            transform:scaleY(-1);
+        }
     }
     
     .haasBioroid & {
-        background:darken(@hb, 30%);
-        &:before {
-            border-bottom-color:darken(@hb, 30%);
-        }
-        
+        .label(@hb);
         h1 { color:#333;}
         p { color:white;}
     }
     .jinteki & {
-        background:darken(@jin, 30%);
-        &:before {
-            border-bottom-color:darken(@jin, 30%);
-        }
+        .label(@jin);
         h1 { color:#333;}
         p { color:white;}
     }
     .nbn & {
-        background:@nbn;
-        &:before {
-            border-bottom-color:@nbn;
-        }
+        .label(@nbn);
         h1, p { color:#333;}
     }
     .weyland & {
-        background:darken(@weyland, 30%);
-        &:before {
-            border-bottom-color:darken(@weyland, 30%);
-        }
+        .label(@weyland);
         h1 { color:#333;}
         p { color:white;}
     }
     .anarch & {
-        background:@anarch;
-        &:before {
-            border-bottom-color:@anarch;
-        }
+        .label(@anarch);
         h1 { color:#333;}
         p { color:white;}
     }
     .criminal & {
-        background:@criminal;
-        &:before {
-            border-bottom-color:@criminal;
-        }
+        .label(@criminal);
         h1 { color:#333;}
         p { color:white;}
     }
     .shaper & {
-        background:@shaper;
-        &:before {
-            border-bottom-color:@shaper;
-        }
+        .label(@shaper);
         h1 { color:#333;}
         p { color:white;}
     }
-    
-    
+    .neutral & {
+        .label(@neutral);
+        h1 { color:#333;}
+        p { color:white;}
+    }
     h1, p {
         display:block;
         margin:0;
@@ -1133,6 +1258,6 @@ figcaption { // sub title underneath logo
         font-size:1.2em;
     }
     p {
-        font-size:0.8em;
+        font-size:1em;
     }
 }

@@ -1,31 +1,39 @@
 <template name="trackerMain">
 <div id="trackerContainer">
     <div class="wrap">
+        <button id="homeButton"><i class="fa fa-home"></i></button>
         <section id="creditsContainer" class="full-width">
             <div id="totalCredits">
                 <div class="creditSymbol large">
                     <span class="square"></span>
                 </div>
-                <strong>{{parent.credits}}</strong>
+                <strong>{{child.credits}}</strong>
             </div>
             <div id="manageCredits">
                 {{> credits}}
             </div>
-
         </section>
         <section id="miscContainer" class="full-width">
+            <div id="clicks">
+                <div id="click-container">
+                    {{> clicks}}
+                </div>
+            </div>
             {{#if isCorp}}
                 <div id="badPublicity">
                     {{> badPublicity}}
                 </div>
+<!--
                 <div id="agenda">
                     {{> agenda}}
                 </div>
+-->
             {{else}}
                 <!-- Add Runner Stats here -->
                 <div id="tag">
                     {{> tag}}
                 </div>
+<!--
                 <div id="agenda">
                     {{> agenda}}
                 </div>
@@ -37,12 +45,8 @@
                         {{> mu}}
                     </div>
                 </div>
+-->
             {{/if}}
-            <div id="clicks">
-                <div id="click-container">
-                    {{> clicks}}
-                </div>
-            </div>
         </section>
     </div>
     {{> labels}}
@@ -63,11 +67,11 @@
             </div>
             <label>+2</label>
         </div>
-        <div class="hexagon credit" data-value="4">
+        <div class="hexagon credit" data-value="3">
             <div class="creditSymbol small">
                 <span class="square"></span>
             </div>
-            <label>+4</label>
+            <label>+3</label>
         </div>
         <div class="hexagon credit" data-value="5">
             <div class="creditSymbol small">
@@ -89,11 +93,11 @@
             </div>
             <label>-2</label>
         </div>
-        <div class="hexagon credit" data-value="-4">
+        <div class="hexagon credit" data-value="-3">
             <div class="creditSymbol small">
                 <span class="square"></span>
             </div>
-            <label>-4</label>
+            <label>-3</label>
         </div>
         <div class="hexagon credit" data-value="-5">
             <div class="creditSymbol small">
@@ -112,11 +116,9 @@
         <label class="total">{{child.badPublicity}}</label>
     </div>
     <div class="badPubButton plus" data-value="1" >
-        <img src="/img/badPub/badPub.svg" />
         <label><i class="fa fa-plus"></i></label>
     </div>
     <div class="badPubButton minus" data-value="-1">
-        <img src="/img/badPub/badPub.svg" />
         <label><i class="fa fa-minus"></i></label>
     </div>
 </template>
@@ -144,11 +146,9 @@
         <label class="total">{{parent.tags}}</label>
     </div>
     <div class="tagButton plus" data-value="1">
-        <img src="/img/tag/tag.svg" />
         <label><i class="fa fa-plus"></i></label>
     </div>
     <div class="tagButton minus" data-value="-1">
-        <img src="/img/tag/tag.svg" />
         <label><i class="fa fa-minus"></i></label>
     </div>
 </template>
@@ -192,7 +192,8 @@
 
 <template name="labels">
     <section id="label" class={{corp.name}}>
-        <h1>{{parent.label}}</h1>
-        <p>{{child.label}}</p>
+        <div id="triangle"></div>
+        <h1>{{child.label}}</h1>
+        <p>{{child.slogan}}</p>
     </section>
 </template>

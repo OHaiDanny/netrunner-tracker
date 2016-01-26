@@ -7,7 +7,6 @@ CorpFactory.create = function (divisionList) {
         name: 'haasBioroid',
         imageURL: '/img/corp/sm/HB_Logo.png',
         clicks: [1,2,3],
-        credits:5,
         divisions: getDivision('haasBioroid', divisionList),
         currentAgendaPts:0,
         maxAgendaPts:7
@@ -16,7 +15,6 @@ CorpFactory.create = function (divisionList) {
         name: 'jinteki',
         imageURL: '/img/corp/sm/Jinteki_Logo.png',
         clicks: [1,2,3],
-        credits:5,
         divisions: getDivision('jinteki', divisionList),
         currentAgendaPts:0,
         maxAgendaPts:7
@@ -25,7 +23,6 @@ CorpFactory.create = function (divisionList) {
         name: 'nbn',
         imageURL: '/img/corp/sm/NBN_Logo.png',
         clicks: [1,2,3],
-        credits:5,
         divisions: getDivision('nbn', divisionList),
         currentAgendaPts:0,
         maxAgendaPts:7
@@ -34,7 +31,6 @@ CorpFactory.create = function (divisionList) {
         name: 'weyland',
         imageURL: '/img/corp/sm/Weyland_Logo.png',
         clicks: [1,2,3],
-        credits:5,
         divisions: getDivision('weyland', divisionList),
         currentAgendaPts:0,
         maxAgendaPts:7

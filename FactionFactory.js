@@ -6,7 +6,6 @@ FactionFactory.create = function (runnerList) {
             label: "Anarch Faction",
             name:'anarch',
             imageURL: '/img/runner/Anarch_Logo.png',
-            credits: 5,
             clicks: [1,2,3,4],
             tags: 0,
             memoryUnit: 4,
@@ -17,7 +16,6 @@ FactionFactory.create = function (runnerList) {
             label: "Criminal Faction",
             name:'criminal',
             imageURL: '/img/runner/Criminal_Logo.png',
-            credits: 5,
             clicks: [1,2,3,4],
             tags: 0,
             memoryUnit: 4,
@@ -28,11 +26,20 @@ FactionFactory.create = function (runnerList) {
             label: "Shaper Faction",
             name: 'shaper',
             imageURL: '/img/runner/Shaper_Logo.png',
-            credits: 5,
             clicks: [1,2,3,4],
             tags: 0,
             memoryUnit:4,
             runners: getRunners('shaper', runnerList),
+            currentAgendaPts:0,
+            maxAgendaPts:7
+        },{
+            label: "Neutral Faction",
+            name: 'neutral',
+            imageURL: '/img/runner/neutral.png',
+            clicks: [1,2,3,4],
+            tags: 0,
+            memoryUnit:4,
+            runners: getRunners('neutral', runnerList),
             currentAgendaPts:0,
             maxAgendaPts:7
         }

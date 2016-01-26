@@ -90,32 +90,32 @@ Meteor.methods({
            } 
         });
     },
-    zeroCredits: function (parent) {
-        if (CorpList.findOne({_id: parent._id})) {
-            CorpList.update(parent._id, {
+    zeroCredits: function (child) {
+        if (DivisionList.findOne({_id: child._id})) {
+            DivisionList.update(child._id, {
                 $set: {
                     credits: 0
                 }
             });
         } else {
-            FactionList.update(parent._id, {
+            RunnerList.update(child._id, {
                 $set: {
                     credits: 0
                 }
             });
         }
     },
-    credits: function (parent, value) {
-        if (CorpList.findOne({_id: parent._id})) {
-            CorpList.update(parent._id, {
+    credits: function (child, value) {
+        if (DivisionList.findOne({_id: child._id})) {
+            DivisionList.update(child._id, {
                 $set: {
-                    credits: parent.credits + value
+                    credits: child.credits + value
                 }
             });
         } else {
-            FactionList.update(parent._id, {
+            RunnerList.update(child._id, {
                 $set: {
-                    credits: parent.credits + value
+                    credits: child.credits + value
                 }
             });
         }
